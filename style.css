@@ -1,0 +1,337 @@
+/*
+Theme Name: AirPassanger
+Theme URI: none
+Description: Tems for WORDPRESS
+Version: 1.0
+Author: the MR.DOGOS
+Author URI: https://www.webmaster19.ru
+*/
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/materialicons/v128/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+/* Custom color theme properties */
+:root {
+  --f7-theme-color: #0197f6;
+  --f7-theme-color-rgb: 1, 151, 246;
+  --f7-theme-color-shade: #017ecd;
+  --f7-theme-color-tint: #22a9fe;
+  --f7-theme-color-page: #eeedef;
+  --f7-theme-color-font: #343434;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100%;
+	background-color: var(--f7-theme-color-page);
+	color: var(--f7-theme-color-font);
+	min-height: 600px;
+	overflow-x: hidden;
+}
+
+a, a:hover, a:active{
+	text-decoration: none;
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}
+
+header .uk-navbar-container:not(.uk-navbar-transparent) {
+	background-color: var(--f7-theme-color)!important;
+}
+
+header .uk-navbar-nav > li > a, header .uk-navbar-toggle {
+	color: var(--f7-theme-color-page)!important;
+}
+
+header .uk-navbar-nav > li:hover > a {
+	background-color: var(--f7-theme-color-shade)!important;
+}
+
+img.bg-card {
+	padding-top: 15px;
+	margin-bottom: 15px;
+}
+
+.uk-grid a:hover {
+	text-decoration: none;
+}
+
+#tile-card .uk-card {
+	min-height: 205px!important;
+}
+
+h3.title-cart {
+	margin-top: 0;
+	padding-bottom: 15px;
+	text-transform: uppercase;
+	font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.0;
+	color: var(--f7-theme-color-shade)!important;
+}
+
+#mobile-menu div.uk-offcanvas-bar {
+	padding: 0!important;
+	background-color: var(--f7-theme-color-page);
+}
+
+#mobile-menu div.uk-background-muted {
+	background-image: url(images/bg-mobile.svg);
+	background-color: var(--f7-theme-color-page);
+}
+
+#mobile-menu div.mobil-logo {
+	width: 250px;
+	height: 180px;
+	background-image: url(images/mobile-logo.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.uk-nav-mobile{
+	padding-left: 0;
+}
+
+.uk-nav-mobile > li{
+	list-style-type: none;
+	padding: 8px 15px;
+}
+
+.uk-nav-mobile > li:hover{
+	background-color: var(--f7-theme-color-shade);
+}
+
+.uk-nav-mobile > li.active{
+	background-color: var(--f7-theme-color);
+}
+
+.uk-nav-mobile > li.disabled{
+	opacity: .3;
+	filter: saturate(0);
+	-webkit-filter: saturate(0);
+}
+
+.uk-accordion-title.disabled{
+	color: #ADADAD!important;
+}
+
+.uk-nav-mobile > li:hover a, .uk-nav-mobile > li.active a{
+	text-decoration: none;
+	color: var(--f7-theme-color-page);
+}
+
+.uk-nav-mobile li a{
+	color: var(--f7-theme-color-shade);
+}
+
+.uk-nav-mobile li a > div{
+	width: 100%;
+	font-size: 1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+main .uk-card > p {
+	text-align: justify;
+}
+
+.simplelist {
+	list-style-type: none;
+}
+
+.post-list,.content-list {
+	min-height: 800px;
+}
+
+.air-list .uk-card > p{
+	min-height: 145px;
+}
+
+.airs-list{
+	min-height: 340px;
+}
+
+main h2.uk-heading-divider {
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--f7-theme-color-shade)!important;
+}
+
+.icon-danger {
+	width: 50px;
+  	height: 50px;
+  	margin: 0 auto;
+  	background-repeat: no-repeat;
+  	background-image: url(images/danger-icon.png);
+}
+
+.icon-table {
+    width: 40px;
+	height: 40px;
+  	margin: 0 auto;
+	position: relative;
+  	background-repeat: no-repeat;
+  	background-image: url(images/danger-icon.png);
+	top: -10px;
+}
+
+#definitions .uk-card.uk-card-default{
+	min-height: 132px;
+}
+
+.align-left {
+	text-align: left!important;
+}
+
+.uk-disabled > img, .uk-disabled > h3 {
+	filter: saturate(0);
+	-webkit-filter: saturate(0);
+}
+
+.uk-nav > li > a.leng-item, .uk-nav.role > li > a {
+	padding: 15px 20px!important;
+}
+
+.uk-nav > li > a.leng-item.active {
+	background-color: var(--f7-theme-color);
+	color: var(--f7-theme-color-page);
+}
+
+#quick-card{
+	text-align: center;
+	background-color: #FFFFFF;
+	border: solid 1px var(--f7-theme-color);
+	border-radius: 50%;
+	position: fixed;
+	z-index: 12;
+	cursor: pointer;
+	bottom: 70px;
+	right: 30px;
+}
+
+#quick-card div.material-icons{
+	font-size: 2rem;
+	padding: 15px;
+}
+
+#quick-card .uk-badge{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.quick-list_item{
+	position: relative;
+	cursor: pointer;
+}
+
+.quick-model_item{
+	position: relative;
+}
+
+.quick-list_title{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.2rem;
+	padding: 15px;
+	background-color: var(--wp--preset--color--pale-cyan-blue);
+	color: var(--f7-theme-color);
+}
+
+.quick-list_icon{
+	width: 40px;
+  	height: 40px;
+  	margin: 0 auto;
+  	background-repeat: no-repeat;
+  	background-image: url(images/air-icons.png);
+}
+
+.quick-list_check,.quick-model_check{
+	background-color: #FFFFFF;
+	position: absolute;
+	right: -7px;
+	top: -5px;
+}
+
+.quick-list_check .uk-checkbox, .quick-model_check .uk-checkbox{
+	width: 30px;
+	height: 30px;
+	border-color: var(--f7-theme-color);
+}
+
+.uk-panel-scrollable{
+	min-width: 100%;
+	max-width: 100%;
+	max-height: 320px;
+	min-height: 280px;
+}
+
+#progress-bar{
+	width: 100%;
+	position: fixed;
+	z-index: 10;
+	bottom: 0;
+    left: 0;
+}
+
+.uk-progress{
+	margin-top: 5px!important;
+}
+
+#progress-bar p.uk-text-meta{
+	font-size: 70%;
+}
+
+#quick-model h3{
+	font-size: 1.25rem;
+	text-transform: uppercase;
+}
+
+footer {
+	padding: 15px 0;
+	background-color: var(--f7-theme-color-font);
+}
+
+footer p {
+	margin-bottom: 0;
+}
+
+@media screen and (min-width: 380px) and (max-width: 767px) {
+	.uk-navbar-item.uk-logo img {
+		height: 32px;
+	}
+}
+
+@media screen and (min-width: 340px) and (max-width: 379px) {
+	.uk-navbar-item.uk-logo img {
+		height: 26px;
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 339px) {
+	.uk-navbar-item.uk-logo img {
+		height: 22px;
+	}
+}

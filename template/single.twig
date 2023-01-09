@@ -1,0 +1,595 @@
+{% extends "template/main/template.twig" %}
+{% block content %}
+<div class="post-content">
+    <main id="main" class="site-main uk-margin-bottom">
+		<div class="uk-container uk-container-large">
+			{% if role != 'Contributor' %}
+			<!-- Yandex.RTB R-A-1708371-1 -->
+			<div id="yandex_rtb_R-A-1708371-1"></div>
+			<script>window.yaContextCb.push(()=>{
+			  Ya.Context.AdvManager.render({
+				renderTo: 'yandex_rtb_R-A-1708371-1',
+				blockId: 'R-A-1708371-1'
+			  })
+			})</script>
+			{% endif %}
+			{% if leng == 'ru' %}
+			<ul class="uk-breadcrumb uk-margin-bottom">
+    			<li><a href="{{ function('site_url') }}">Главная</a></li>
+    			<li><a>{{ post.title }}</a></li>
+			</ul>
+			{% else %}
+			<ul class="uk-breadcrumb uk-margin-bottom">
+				<li><a href="{{ function('site_url') }}">Home</a></li>
+    			<li><a>{{ post.meta('title_en') }}</a></li>
+			</ul>
+			{% endif %}
+			<div class="uk-card uk-card-default uk-card-body post-list">
+				{% if leng == 'ru' %}
+				<h2 class="uk-heading-divider uk-margin-bottom">{{ post.title }}</h2>
+       			{{ post.content }}
+				{% else %}
+				<h2 class="uk-heading-divider uk-margin-bottom">{{ post.meta('title_en') }}</h2>
+       			{{ post.meta('content_en') }}
+				{% endif %}
+				{% if post.id == 43 %}
+					<h3 class="uk-heading-divider uk-text-bold uk-margin-bottom">{{ air_rus.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-3@l air-list" uk-grid>
+						{% for item in air_rus.items %}
+						<div>
+							<div class="uk-card uk-card-default uk-card-small uk-card-body uk-text-center uk-margin-bottom">
+								<img class="bg-card" src="{{ item.image }}" width="200" height="80" alt="{{ item.title }}" uk-img>
+								<p class="uk-text-left">{{ item.content }}</p>
+								<a class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" href="{{ item.link }}" target="_bclank">{{ item.title }}</a>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="uk-heading-divider uk-text-bold uk-margin-bottom">{{ air_world.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-3@l air-list" uk-grid>
+						{% for item in air_world.items %}
+						<div>
+							<div class="uk-card uk-card-default uk-card-small uk-card-body uk-text-center uk-margin-bottom">
+								<img class="bg-card" src="{{ item.image }}" width="200" height="80" alt="{{ item.title }}" uk-img>
+								<p class="uk-text-left">{{ item.content }}</p>
+								<a class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" href="{{ item.link }}" target="_bclank">{{ item.title }}</a>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+				{% if post.id == 46 %}
+					<h3 class="uk-heading-divider uk-text-bold uk-margin-bottom">{{ wrong.title }}</h3>
+					<ul uk-accordion>
+						{% for item in wrong.items %}
+    					<li class="uk-box-shadow-small uk-padding-small uk-margin-bottom">
+							<a class="uk-accordion-title" href="#">{{ item.title }}</a>
+							<div class="uk-accordion-content">{{ item.content }}</div>
+						</li>
+						{% endfor %}
+					</ul>
+					<h3 class="uk-heading-divider uk-text-bold uk-margin-bottom">{{ quest.title }}</h3>
+					<ul uk-accordion>
+						{% for item in quest.items %}
+						{% if role == 'Contributor' %}
+    					<li class="uk-box-shadow-small uk-padding-small uk-margin-bottom">
+							<a class="uk-accordion-title" href="#">{{ item.title }}</a>
+							<div class="uk-accordion-content">{{ item.content }}</div>
+						</li>						
+						{% else %}
+    					<li class="uk-box-shadow-small uk-padding-small uk-margin-bottom">
+							<a class="uk-accordion-title disabled">{{ item.title }}</a>
+						</li>
+						{% endif %}
+						{% endfor %}
+					</ul>
+				{% endif %}
+				{% if post.id == 71 %}
+				<div class="quick-list">
+					<h3 class="quick-list_title uk-margin-top">{{ quick_food.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_food.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_sport.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_sport.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_tourism.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_tourism.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_medical.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_medical.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_electron.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_electron.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_tools.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_tools.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_vehicles.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_vehicles.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_personal.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_personal.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_smoking.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_smoking.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_weapons.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_weapons.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_creativ.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_creativ.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<h3 class="quick-list_title uk-margin-top">{{ quick_other.title }}</h3>
+					<div class="uk-child-width-1-1 uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+						{% for item in quick_other.items %}
+						<div id="item_{{ item.id }}">
+							<div class="quick-list_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+								<div uk-grid>
+									<div class="uk-width-auto">
+										<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+									</div>
+									<div class="uk-width-expand uk-flex uk-flex-middle">
+										<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+									</div>
+								</div>
+								<label class="quick-list_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}"></label>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+					<hr class="uk-divider-icon">
+				</div>
+				{% endif %}
+			</div>
+			{% if post.id == 71 %}
+			<div id="progress-bar" class="uk-animation-slide-bottom">
+				<div class="uk-card uk-card-small uk-card-default uk-card-body">
+					<div class="uk-container uk-container-large">
+						{% if leng == 'ru' %}
+						<p class="uk-margin-remove-bottom uk-text-meta uk-text-center">Вместимость багажа <span class="uk-text-primary">0</span> / 30000</p>
+						{% else %}
+						<p class="uk-margin-remove-bottom uk-text-meta uk-text-center">Baggage capacity <span class="uk-text-primary">0</span> / 30000</p>
+						{% endif %}
+						<progress id="js-progressbar" class="uk-progress" value="0" max="30000"></progress>
+					</div>
+				</div>
+			</div>
+			<div id="quick-model" class="uk-flex-top" uk-modal>
+				<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+					<button class="uk-modal-close-default" type="button" uk-close></button>
+					{% if (leng == 'ru') %}
+						<h3 class="uk-modal-title uk-heading-divider uk-text-bold uk-text-primary">В багаже</h3>
+					{% else %}
+						<h3 class="uk-modal-title uk-heading-divider uk-text-bold uk-text-primary">In luggage</h3>
+					{% endif %}
+					<div class="uk-modal-body">
+						<div class="uk-panel uk-panel-scrollable">
+						<ul class="uk-list">
+							{% for item in quick_food.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_sport.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_tourism.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_medical.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_electron.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_tools.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_vehicles.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_personal.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_smoking.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_weapons.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_creativ.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+							{% for item in quick_other.items %}
+							<li id="model_{{ item.id }}" class="uk-hidden">
+								<div class="quick-model_item uk-card uk-card-default uk-card-small uk-card-body uk-margin-bottom">
+									<div uk-grid>
+										<div class="uk-width-auto">
+											<div class="quick-list_icon" style="background-position: {{ item.icon_coor }}"></div>
+										</div>
+										<div class="uk-width-expand uk-flex uk-flex-middle">
+											<p class="uk-margin-remove-bottom">{{ item.title }}</p>
+										</div>
+										<label class="quick-model_check"><input class="uk-checkbox" type="checkbox" data-id="{{ item.id }}" data-weight="{{ item.weight }}" data-accord="{{ item.accord_id }}" checked></label>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
+						</div>
+					</div>
+					<div class="uk-modal-footer">
+						{% if leng == 'ru' %}
+						<div uk-grid>
+    						<div class="uk-width-1-1 uk-width-1-2@l">
+								<button class="recom-but uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"><span uk-icon="bolt"></span> Рекомендация</button>
+							</div>
+							<div class="uk-width-1-1 uk-width-1-2@l">
+								<button class="clear-but uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"><span uk-icon="trash"></span> Очистить</button>
+							</div>
+						</div>
+						{% else %}
+						<div uk-grid>
+    						<div class="uk-width-1-1 uk-width-1-2@l">
+								<button class="recom-but uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"><span uk-icon="bolt"></span> Recommendation</button>
+							</div>
+							<div class="uk-width-1-1 uk-width-1-2@l">
+								<button class="clear-but uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom"><span uk-icon="trash"></span> Clear</button>
+							</div>
+						</div>						
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div id="recom-model" class="uk-flex-top" uk-modal>
+				<div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+					<button class="uk-modal-close-default" type="button" uk-close></button>
+					{% if (leng == 'ru') %}
+					<h3 class="uk-modal-title uk-heading-divider uk-text-bold uk-text-primary">Рекомендация</h3>
+					{% else %}
+					<h3 class="uk-modal-title uk-heading-divider uk-text-bold uk-text-primary">Recommendation</h3>
+					{% endif %}
+					<div class="uk-modal-body uk-padding-remove">
+						<ul uk-accordion>
+						{% if (leng == 'ru') %}
+							{{ accodfood.content }}
+							{{ accodalko.content }}
+							{{ accodcutler.content }}
+							{{ accodsport.content }}
+							{{ accodturism.content }}
+							{{ accodmedic.content }}
+							{{ accodelectro.content }}
+							{{ accodtools.content }}
+							{{ accodcars.content }}
+							{{ accodpofum.content}}
+							{{ accodsmook.content }}
+							{{ accodguns.content }}
+							{{ accodart.content }}
+							{{ accodother.content }}
+							{{ accodpaper.content }}
+							{{ accodadust.content }}
+							{{ accodanim.content }}
+							{{ accodflora.content }}
+						{% else %}
+							{{ accodfood.meta('content_en') }}
+							{{ accodalko.meta('content_en') }}
+							{{ accodcutler.meta('content_en') }}
+							{{ accodsport.meta('content_en') }}
+							{{ accodturism.meta('content_en') }}
+							{{ accodmedic.meta('content_en') }}
+							{{ accodelectro.meta('content_en') }}
+							{{ accodtools.meta('content_en') }}
+							{{ accodcars.meta('content_en') }}
+							{{ accodpofum.meta('content_en') }}
+							{{ accodsmook.meta('content_en') }}
+							{{ accodguns.meta('content_en') }}
+							{{ accodart.meta('content_en') }}
+							{{ accodother.meta('content_en') }}
+							{{ accodpaper.meta('content_en') }}
+							{{ accodadust.meta('content_en') }}
+							{{ accodanim.meta('content_en') }}
+							{{ accodflora.meta('content_en') }}
+						{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+    </main>
+</div>
+{% endblock %}

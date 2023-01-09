@@ -1,0 +1,41 @@
+<header>
+<nav class="uk-navbar-container uk-margin uk-box-shadow-medium" uk-navbar="mode: click" uk-sticky="start: 200; animation: uk-animation-slide-top;">
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="{{ logo.href }}"><img src="{{ logo.image }}" alt="{{ logo.alt }}" uk-img></a>
+    </div>
+	<div class="uk-navbar-right">
+		<ul class="uk-iconnav">
+			{% if role %}
+				<li><a class="uk-navbar-toggle" href="#" uk-icon="icon: user"></a></li>
+				<ul class="role uk-nav uk-nav-default" data-role="{{ role }}" uk-dropdown="mode: click">
+				{% if leng == 'ru' %}
+					{% if role != 'Contributor' %}
+					<li><a id="but-pay" href="#"><span uk-icon="credit-card"></span> Получить доступ</a>
+					{% endif %}
+					<li><a href="{{ logout }}"><span uk-icon="sign-out"></span> Выход</a>
+				{% else %}
+					{% if role != 'Contributor' %}
+					<li><a id="but-pay" href="#"><span uk-icon="credit-card"></span> Get access</a>
+					{% endif %}
+					<li><a href="{{ logout }}"><span uk-icon="sign-out"></span> Sign-out</a>
+				{% endif %}
+				</ul>
+			{% else %}
+				<li><a class="uk-navbar-toggle" href="#auth-form" uk-icon="icon: user" uk-toggle></a></li>
+			{% endif %}
+			<li><a class="uk-navbar-toggle" href="#"><span uk-icon="world"></span></a>
+				<ul class="uk-nav uk-nav-default" uk-dropdown="mode: click">
+					{% if leng == 'ru' %}
+					<li><a class="leng-item active" href="#" data-leng="ru"><span uk-icon="world"></span> Русский</a>
+					<li><a class="leng-item" href="#" data-leng="en"><span uk-icon="world"></span> English</a>
+					{% else %}
+					<li><a class="leng-item" href="#" data-leng="ru"><span uk-icon="world"></span> Русский</a>
+					<li><a class="leng-item active" href="#" data-leng="en"><span uk-icon="world"></span> English</a>
+					{% endif %}
+				</ul>
+			</li>
+			<li><a class="uk-navbar-toggle" uk-icon="icon: menu" href="#mobile-menu" uk-toggle></a></li>
+		</ul>
+    </div>
+</nav>
+</header>

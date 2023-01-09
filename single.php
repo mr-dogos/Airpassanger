@@ -1,0 +1,71 @@
+<?php
+$context = Timber::get_context();
+$context['logo'] = getLogo();
+$context['leng'] = setLeng();
+$context['role'] = get_current_user_role();
+$context['logout'] = wp_logout_url(home_url());
+if($context['leng'] == 'ru'):
+$context['menu'] = new Timber\Menu('AIRRU');
+$context['post'] = new TimberPost();
+$context['air_rus'] = get_airlins(4,'ru');
+$context['air_world'] = get_airlins(5,'ru');
+$context['quest'] = get_quest(6,'ru');
+$context['wrong'] = get_quest(7,'ru');
+if($context['role'] == 'Contributor'):
+$context['quick_food'] = get_quick(9,319,'ru');
+$context['quick_sport'] = get_quick(10,325,'ru');
+$context['quick_tourism'] = get_quick(11,340,'ru');
+$context['quick_medical'] = get_quick(12,354,'ru');
+$context['quick_electron'] = get_quick(13,382,'ru');
+$context['quick_tools'] = get_quick(14,407,'ru');
+$context['quick_vehicles'] = get_quick(15,425,'ru');
+$context['quick_personal'] = get_quick(16,437,'ru');
+$context['quick_smoking'] = get_quick(17,451,'ru');
+$context['quick_weapons'] = get_quick(18,469,'ru');
+$context['quick_creativ'] = get_quick(19,487,'ru');
+$context['quick_other'] = get_quick(20,497,'ru');
+endif;
+else:
+$context['menu'] = new Timber\Menu('AIREN');
+$context['post'] = new TimberPost();
+$context['air_rus'] = get_airlins(4,'en');
+$context['air_world'] = get_airlins(5,'en');
+$context['quest'] = get_quest(6,'en');
+$context['wrong'] = get_quest(7,'en');
+if($context['role'] == 'Contributor'):
+$context['quick_food'] = get_quick(9,319,'en');
+$context['quick_sport'] = get_quick(10,325,'en');
+$context['quick_tourism'] = get_quick(11,340,'en');
+$context['quick_medical'] = get_quick(12,354,'en');
+$context['quick_electron'] = get_quick(13,382,'en');
+$context['quick_tools'] = get_quick(14,407,'en');
+$context['quick_vehicles'] = get_quick(15,425,'en');
+$context['quick_personal'] = get_quick(16,437,'en');
+$context['quick_smoking'] = get_quick(17,451,'en');
+$context['quick_weapons'] = get_quick(18,469,'en');
+$context['quick_creativ'] = get_quick(19,487,'en');
+$context['quick_other'] = get_quick(20,497,'en');
+endif;
+endif;
+if($context['role'] == 'Contributor'):
+$context['accodfood'] = new TimberPost(319);
+$context['accodalko'] = new TimberPost(321);
+$context['accodcutler'] = new TimberPost(323);
+$context['accodsport'] = new TimberPost(325);
+$context['accodturism'] = new TimberPost(340);
+$context['accodmedic'] = new TimberPost(354);
+$context['accodelectro'] = new TimberPost(382);
+$context['accodtools'] = new TimberPost(407);
+$context['accodcars'] = new TimberPost(425);
+$context['accodpofum'] = new TimberPost(437);
+$context['accodsmook'] = new TimberPost(451);
+$context['accodguns'] = new TimberPost(469);
+$context['accodart'] = new TimberPost(487);
+$context['accodother'] = new TimberPost(497);
+$context['accodpaper'] = new TimberPost(499);
+$context['accodadust'] = new TimberPost(501);
+$context['accodanim'] = new TimberPost(503);
+$context['accodflora'] = new TimberPost(505);
+endif;
+$context['message'] = new TimberPost(294);
+Timber::render('template/single.twig', $context);
